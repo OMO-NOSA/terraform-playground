@@ -1,10 +1,7 @@
-output "instance_id" {
-  description = "ID of the EC2 instance"
-  value       = aws_instance.app_server.id
-}
 
-output "instance_public_ip" {
-  description = "Public IP address of the EC2 instance"
-  value       = aws_instance.app_server.public_ip
+
+output "public_dns_name" {
+  description = "Public DNS names of the load balancer for this project"
+  value       = module.elb_http.this_elb_dns_name
 }
 
