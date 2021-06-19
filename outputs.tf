@@ -18,4 +18,8 @@ output "web_server_count" {
   value       = length(module.ec2_instances.instance_ids)
 }
 
+output "aws_region" {
+  description = "AWS region"
+  value       = data.aws_region.current.name
+}
 

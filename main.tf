@@ -30,6 +30,9 @@ data "aws_availability_zones" "available" {
   state = "available"
 }
 
+data "aws_region" "current" { }
+
+
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "2.64.0"
@@ -118,4 +121,13 @@ module "ec2_instances" {
   security_group_ids = [module.app_security_group.this_security_group_id]
 
   tags = var.resource_tags
+  
+}
+
+data "terraform_remote_state" "vpc" {
+  backend = "local"
+
+  config = {
+    path = "terraform.tfstate"
+  }
 }

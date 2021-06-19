@@ -75,6 +75,7 @@ variable "resource_tags" {
   default     = {
     project     = "project-alpha",
     environment = "dev"
+    Name = "TestServers"
   }
 }
 
